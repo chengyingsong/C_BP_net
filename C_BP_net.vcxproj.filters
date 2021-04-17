@@ -14,4 +14,37 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="load_data.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="c_BP.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="load_data.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="t10k-images.idx3-ubyte">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="t10k-labels.idx1-ubyte">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="train-images.idx3-ubyte">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="train-labels.idx1-ubyte">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
 </Project>
