@@ -1,5 +1,7 @@
 #include "Matrix.h"
 #include "..\C_BP_net\Matrix.h"
+#include<fstream>
+
 
 Matrix::Matrix(int shape0, int shape1)
 {
@@ -27,6 +29,14 @@ Matrix Matrix::transpose()
     return M;
 }
 
+void Matrix::print() {
+    for (int i = 0; i < shape0; i++)
+    {
+        for (int j = 0; j < shape1; j++)
+            printf("%.2lf\t", data[i][j]);
+        printf("\n");
+    }
+}
 Matrix Matrix::dot(Matrix b)
 {
     //两个矩阵相乘
@@ -121,6 +131,26 @@ Matrix Matrix::eyes()
             m.data[i][i] = data[i][0];
         return m;
     }
+}
+
+void Matrix::save(fstream &file) {
+    assert(file.is_open() == true);
+    for (int i = 0; i < shape0; i++)
+    {
+        for (int j = 0; j < shape1; j++)
+            file << data[i][j] << '\t';
+        file << endl;
+    }
+}
+
+
+void Matrix::load(fstream &file) {
+    assert(file.is_open() == true);
+    for (int i = 0; i < shape0; i++)
+    {
+        for (int j = 0; j < shape1; j++)
+            file >> data[i][j];
+       }
 }
 
 Matrix operator+(const Matrix &m1, const Matrix &m2)

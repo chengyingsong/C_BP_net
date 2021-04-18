@@ -141,17 +141,14 @@
   <ItemGroup>
     <ClInclude Include="load_data.h" />
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="model.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Config.cpp" />
     <ClCompile Include="c_BP.cpp" />
     <ClCompile Include="load_data.cpp" />
     <ClCompile Include="Matrix.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="t10k-images.idx3-ubyte" />
-    <None Include="t10k-labels.idx1-ubyte" />
-    <None Include="train-images.idx3-ubyte" />
-    <None Include="train-labels.idx1-ubyte" />
+    <ClCompile Include="Model.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

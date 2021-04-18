@@ -1,4 +1,4 @@
-#include "load_data.h"
+//#include "load_data.h"
 #include "..\C_BP_net\load_data.h"
 
 int ReverseInt(int i)
@@ -26,7 +26,7 @@ void read_Mnist_Label(string filename, Matrix &labels,int len)
         number_of_images = ReverseInt(number_of_images);
         //cout << "magic number = " << magic_number << endl;
         //cout << "number of images = " << number_of_images << endl;
-        assert(len < number_of_images);
+        assert(len <= number_of_images);
         for (int i = 0; i < len; i++)
         {
             unsigned char label = 0;
@@ -34,6 +34,7 @@ void read_Mnist_Label(string filename, Matrix &labels,int len)
             labels.data[i][0] = (double)label;
         }
     }
+    file.close();
 }
 
 void read_Mnist_Images(string filename, Matrix &images,int len)
@@ -54,7 +55,7 @@ void read_Mnist_Images(string filename, Matrix &images,int len)
         number_of_images = ReverseInt(number_of_images);
         n_rows = ReverseInt(n_rows);
         n_cols = ReverseInt(n_cols);
-        assert(len < number_of_images);
+        assert(len <= number_of_images);
        // cout << "magic number = " << magic_number << endl;
        // cout << "number of images = " << number_of_images << endl;
         //cout << "rows = " << n_rows << endl;
@@ -78,20 +79,21 @@ void read_Mnist_Images(string filename, Matrix &images,int len)
         }
     }
     else { printf("file not open!!\n"); }
+    file.close();
 }
 
 unordered_map<string, Matrix> load_data()
 {
-    int train_len = 6000;
-    int test_len = 1000;
+    extern int train_len;
+    extern int test_len;
     Matrix test_labels(test_len, 1);
     Matrix train_labels(train_len, 1);
     Matrix test_images(test_len, 784);
     Matrix train_images(train_len, 784);
-    read_Mnist_Label("train-labels.idx1-ubyte", train_labels,train_len);
-    read_Mnist_Images("train-images.idx3-ubyte", train_images,train_len);
-    read_Mnist_Label("t10k-labels.idx1-ubyte", test_labels,test_len);
-    read_Mnist_Images("t10k-images.idx3-ubyte", test_images,test_len);
+    read_Mnist_Label("data\\train-labels.idx1-ubyte", train_labels,train_len);
+    read_Mnist_Images("data\\train-images.idx3-ubyte", train_images,train_len);
+    read_Mnist_Label("data\\t10k-labels.idx1-ubyte", test_labels,test_len);
+    read_Mnist_Images("data\\t10k-images.idx3-ubyte", test_images,test_len);
     unordered_map<string, Matrix> m;
     m.insert({"train_images", train_images});
     m.insert({"test_images", test_images});

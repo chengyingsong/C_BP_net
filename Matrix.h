@@ -21,7 +21,9 @@ public:
     Matrix dot(Matrix b);
     void init(double std);
     void assign(vector<double> data);
-    //void print_matrix();
+    void print();
+    void save(fstream &file);
+    void load(fstream &file);
     vector<int> argmax(int dim);
     Matrix eyes();
 };
